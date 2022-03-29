@@ -1,7 +1,7 @@
 import { Clock } from './clock'
 
 describe('Clock', () => {
-  describe('Creating a new clock with an initial time', () => {
+  xdescribe('Creating a new clock with an initial time', () => {
     it('on the hour', () => {
       expect(new Clock(8).toString()).toEqual('08:00')
     })
@@ -78,7 +78,7 @@ describe('Clock', () => {
       expect(new Clock(-121, -5810).toString()).toEqual('22:10')
     })
 
-    describe('Adding and subtracting minutes', () => {
+    xdescribe('Adding and subtracting minutes', () => {
       it('add minutes', () => {
         expect(new Clock(10, 0).plus(3).toString()).toEqual('10:03')
       })
@@ -145,35 +145,35 @@ describe('Clock', () => {
     })
 
     describe('Construct two separate clocks, set times, test if they are equal', () => {
-      it('clocks with same time', () => {
+      xit('clocks with same time', () => {
         expect(new Clock(15, 37).equals(new Clock(15, 37))).toBeTruthy()
       })
 
-      it('clocks a minute apart', () => {
+      xit('clocks a minute apart', () => {
         expect(new Clock(15, 36).equals(new Clock(15, 37))).toBeFalsy()
       })
 
-      it('clocks an hour apart', () => {
+      xit('clocks an hour apart', () => {
         expect(new Clock(14, 37).equals(new Clock(15, 37))).toBeFalsy()
       })
 
-      it('clocks with hour overflow', () => {
+      xit('clocks with hour overflow', () => {
         expect(new Clock(10, 37).equals(new Clock(34, 37))).toBeTruthy()
       })
 
-      it('clocks with hour overflow by several days', () => {
+      xit('clocks with hour overflow by several days', () => {
         expect(new Clock(3, 11).equals(new Clock(99, 11))).toBeTruthy()
       })
 
-      it('clocks with negative hour', () => {
+      xit('clocks with negative hour', () => {
         expect(new Clock(22, 40).equals(new Clock(-2, 40))).toBeTruthy()
       })
 
-      it('clocks with negative hour that wraps', () => {
+      xit('clocks with negative hour that wraps', () => {
         expect(new Clock(17, 3).equals(new Clock(-31, 3))).toBeTruthy()
       })
 
-      it('clocks with negative hour that wraps multiple times', () => {
+      xit('clocks with negative hour that wraps multiple times', () => {
         expect(new Clock(13, 49).equals(new Clock(-83, 49))).toBeTruthy()
       })
 

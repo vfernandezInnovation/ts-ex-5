@@ -66,7 +66,7 @@ describe('Clock', () => {
       expect(new Clock(1, -160).toString()).toEqual('22:20')
     })
 
-   it('negative minutes rolls over continuously', () => {
+  it('negative minutes rolls over continuously', () => {
       expect(new Clock(1, -4820).toString()).toEqual('16:40')
     })
 
@@ -145,39 +145,39 @@ describe('Clock', () => {
     })
 
     describe('Construct two separate clocks, set times, test if they are equal', () => {
-      it('clocks with same time', () => {
+      xit('clocks with same time', () => {
         expect(new Clock(15, 37).equals(new Clock(15, 37))).toBeTruthy()
       })
 
-      it('clocks a minute apart', () => {
+      xit('clocks a minute apart', () => {
         expect(new Clock(15, 36).equals(new Clock(15, 37))).toBeFalsy()
       })
 
-      it('clocks an hour apart', () => {
+      xit('clocks an hour apart', () => {
         expect(new Clock(14, 37).equals(new Clock(15, 37))).toBeFalsy()
       })
 
-      it('clocks with hour overflow', () => {
+      xit('clocks with hour overflow', () => {
         expect(new Clock(10, 37).equals(new Clock(34, 37))).toBeTruthy()
       })
 
-      it('clocks with hour overflow by several days', () => {
+      xit('clocks with hour overflow by several days', () => {
         expect(new Clock(3, 11).equals(new Clock(99, 11))).toBeTruthy()
       })
 
-      it('clocks with negative hour', () => {
+      xit('clocks with negative hour', () => {
         expect(new Clock(22, 40).equals(new Clock(-2, 40))).toBeTruthy()
       })
 
-      it('clocks with negative hour that wraps', () => {
+      xit('clocks with negative hour that wraps', () => {
         expect(new Clock(17, 3).equals(new Clock(-31, 3))).toBeTruthy()
       })
 
-      it('clocks with negative hour that wraps multiple times', () => {
+      xit('clocks with negative hour that wraps multiple times', () => {
         expect(new Clock(13, 49).equals(new Clock(-83, 49))).toBeTruthy()
       })
 
-      it('clocks with minute overflow', () => {
+      xit('clocks with minute overflow', () => {
         expect(new Clock(0, 1).equals(new Clock(0, 1441))).toBeTruthy()
       })
       it('clocks with minute overflow by several days', () => {

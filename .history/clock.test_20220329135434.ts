@@ -2,47 +2,47 @@ import { Clock } from './clock'
 
 describe('Clock', () => {
   describe('Creating a new clock with an initial time', () => {
-    it('on the hour', () => {
+    xit('on the hour', () => {
       expect(new Clock(8).toString()).toEqual('08:00')
     })
 
-    it('past the hour', () => {
+    xit('past the hour', () => {
       expect(new Clock(11, 9).toString()).toEqual('11:09')
     })
 
-    it('midnight is zero hours', () => {
+    xit('midnight is zero hours', () => {
       expect(new Clock(24, 0).toString()).toEqual('00:00')
     })
 
-    it('hour rolls over', () => {
+    xit('hour rolls over', () => {
       expect(new Clock(25, 0).toString()).toEqual('01:00')
     })
 
-    it('hour rolls over continuously', () => {
+    xit('hour rolls over continuously', () => {
       expect(new Clock(100, 0).toString()).toEqual('04:00')
     })
 
-    it('sixty minutes is next hour', () => {
+    xit('sixty minutes is next hour', () => {
       expect(new Clock(1, 60).toString()).toEqual('02:00')
     })
 
-    it('minutes roll over', () => {
+    xit('minutes roll over', () => {
       expect(new Clock(0, 160).toString()).toEqual('02:40')
     })
 
-    it('minutes roll over continuously', () => {
+    xit('minutes roll over continuously', () => {
       expect(new Clock(0, 1723).toString()).toEqual('04:43')
     })
 
-    it('hour and minutes roll over', () => {
+    xit('hour and minutes roll over', () => {
       expect(new Clock(25, 160).toString()).toEqual('03:40')
     })
 
-    it('hour and minutes roll over continuously', () => {
+    xit('hour and minutes roll over continuously', () => {
       expect(new Clock(201, 3001).toString()).toEqual('11:01')
     })
 
-    it('hour and minutes roll over to exactly midnight', () => {
+    xit('hour and minutes roll over to exactly midnight', () => {
       expect(new Clock(72, 8640).toString()).toEqual('00:00')
     })
 
@@ -66,7 +66,7 @@ describe('Clock', () => {
       expect(new Clock(1, -160).toString()).toEqual('22:20')
     })
 
-   it('negative minutes rolls over continuously', () => {
+  it('negative minutes rolls over continuously', () => {
       expect(new Clock(1, -4820).toString()).toEqual('16:40')
     })
 

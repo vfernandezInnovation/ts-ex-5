@@ -1,4 +1,5 @@
 import { debug } from "console";
+
 export class Clock {
   hour: number;
   minute?: number;
@@ -13,7 +14,7 @@ export class Clock {
     this.minute = minute % 60;
   }
   public toString(): unknown {
-    return buildClock(this.hour) + ":"+buildClock(this.minute as number);
+    return buildClock(this.hour) + ":"+buildClock(this.minute);
   }
   public plus(minutes: number): Clock {
     let reloj:Clock = new Clock(this.hour, this.minute as number+minutes)

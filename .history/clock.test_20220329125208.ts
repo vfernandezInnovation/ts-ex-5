@@ -66,7 +66,7 @@ describe('Clock', () => {
       expect(new Clock(1, -160).toString()).toEqual('22:20')
     })
 
-   it('negative minutes rolls over continuously', () => {
+  it('negative minutes rolls over continuously', () => {
       expect(new Clock(1, -4820).toString()).toEqual('16:40')
     })
 
@@ -180,6 +180,7 @@ describe('Clock', () => {
       it('clocks with minute overflow', () => {
         expect(new Clock(0, 1).equals(new Clock(0, 1441))).toBeTruthy()
       })
+
       it('clocks with minute overflow by several days', () => {
         expect(new Clock(2, 2).equals(new Clock(2, 4322))).toBeTruthy()
       })

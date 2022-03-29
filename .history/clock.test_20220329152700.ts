@@ -2,83 +2,83 @@ import { Clock } from './clock'
 
 describe('Clock', () => {
   describe('Creating a new clock with an initial time', () => {
-    it('on the hour', () => {
+    xit('on the hour', () => {
       expect(new Clock(8).toString()).toEqual('08:00')
     })
 
-    it('past the hour', () => {
+    xit('past the hour', () => {
       expect(new Clock(11, 9).toString()).toEqual('11:09')
     })
 
-    it('midnight is zero hours', () => {
+    xit('midnight is zero hours', () => {
       expect(new Clock(24, 0).toString()).toEqual('00:00')
     })
 
-    it('hour rolls over', () => {
+    xit('hour rolls over', () => {
       expect(new Clock(25, 0).toString()).toEqual('01:00')
     })
 
-    it('hour rolls over continuously', () => {
+    xit('hour rolls over continuously', () => {
       expect(new Clock(100, 0).toString()).toEqual('04:00')
     })
 
-    it('sixty minutes is next hour', () => {
+    xit('sixty minutes is next hour', () => {
       expect(new Clock(1, 60).toString()).toEqual('02:00')
     })
 
-    it('minutes roll over', () => {
+    xit('minutes roll over', () => {
       expect(new Clock(0, 160).toString()).toEqual('02:40')
     })
 
-    it('minutes roll over continuously', () => {
+    xit('minutes roll over continuously', () => {
       expect(new Clock(0, 1723).toString()).toEqual('04:43')
     })
 
-    it('hour and minutes roll over', () => {
+    xit('hour and minutes roll over', () => {
       expect(new Clock(25, 160).toString()).toEqual('03:40')
     })
 
-    it('hour and minutes roll over continuously', () => {
+    xit('hour and minutes roll over continuously', () => {
       expect(new Clock(201, 3001).toString()).toEqual('11:01')
     })
 
-    it('hour and minutes roll over to exactly midnight', () => {
+    xit('hour and minutes roll over to exactly midnight', () => {
       expect(new Clock(72, 8640).toString()).toEqual('00:00')
     })
 
-    it('negative hour', () => {
+    xit('negative hour', () => {
       expect(new Clock(-1, 15).toString()).toEqual('23:15')
     })
 
-    it('negative hour rolls over', () => {
+    xit('negative hour rolls over', () => {
       expect(new Clock(-25, 0).toString()).toEqual('23:00')
     })
 
-    it('negative hour rolls over continuously', () => {
+    xit('negative hour rolls over continuously', () => {
       expect(new Clock(-91, 0).toString()).toEqual('05:00')
     })
 
-    it('negative minutes', () => {
+    xit('negative minutes', () => {
       expect(new Clock(1, -40).toString()).toEqual('00:20')
     })
 
-    it('negative minutes rolls over', () => {
+    xit('negative minutes rolls over', () => {
       expect(new Clock(1, -160).toString()).toEqual('22:20')
     })
 
-   it('negative minutes rolls over continuously', () => {
+   xit('negative minutes rolls over continuously', () => {
       expect(new Clock(1, -4820).toString()).toEqual('16:40')
     })
 
-   it('negative hour and minutes both roll over', () => {
+   xit('negative hour and minutes both roll over', () => {
       expect(new Clock(-25, -160).toString()).toEqual('20:20')
     })
 
-    it('negative hour and minutes both roll over continuously', () => {
+    xit('negative hour and minutes both roll over continuously', () => {
       expect(new Clock(-121, -5810).toString()).toEqual('22:10')
     })
 
-    describe('Adding and subtracting minutes', () => {
+    xdescribe('Adding and subtracting minutes', () => {
       it('add minutes', () => {
         expect(new Clock(10, 0).plus(3).toString()).toEqual('10:03')
       })
@@ -145,35 +145,35 @@ describe('Clock', () => {
     })
 
     describe('Construct two separate clocks, set times, test if they are equal', () => {
-      it('clocks with same time', () => {
+      xit('clocks with same time', () => {
         expect(new Clock(15, 37).equals(new Clock(15, 37))).toBeTruthy()
       })
 
-      it('clocks a minute apart', () => {
+      xit('clocks a minute apart', () => {
         expect(new Clock(15, 36).equals(new Clock(15, 37))).toBeFalsy()
       })
 
-      it('clocks an hour apart', () => {
+      xit('clocks an hour apart', () => {
         expect(new Clock(14, 37).equals(new Clock(15, 37))).toBeFalsy()
       })
 
-      it('clocks with hour overflow', () => {
+      xit('clocks with hour overflow', () => {
         expect(new Clock(10, 37).equals(new Clock(34, 37))).toBeTruthy()
       })
 
-      it('clocks with hour overflow by several days', () => {
+      xit('clocks with hour overflow by several days', () => {
         expect(new Clock(3, 11).equals(new Clock(99, 11))).toBeTruthy()
       })
 
-      it('clocks with negative hour', () => {
+      xit('clocks with negative hour', () => {
         expect(new Clock(22, 40).equals(new Clock(-2, 40))).toBeTruthy()
       })
 
-      it('clocks with negative hour that wraps', () => {
+      xit('clocks with negative hour that wraps', () => {
         expect(new Clock(17, 3).equals(new Clock(-31, 3))).toBeTruthy()
       })
 
-      it('clocks with negative hour that wraps multiple times', () => {
+      xit('clocks with negative hour that wraps multiple times', () => {
         expect(new Clock(13, 49).equals(new Clock(-83, 49))).toBeTruthy()
       })
 

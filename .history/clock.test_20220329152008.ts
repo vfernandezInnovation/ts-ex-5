@@ -78,7 +78,7 @@ describe('Clock', () => {
       expect(new Clock(-121, -5810).toString()).toEqual('22:10')
     })
 
-    describe('Adding and subtracting minutes', () => {
+    xdescribe('Adding and subtracting minutes', () => {
       it('add minutes', () => {
         expect(new Clock(10, 0).plus(3).toString()).toEqual('10:03')
       })

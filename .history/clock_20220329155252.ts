@@ -1,4 +1,5 @@
 import { debug } from "console";
+
 export class Clock {
   hour: number;
   minute?: number;
@@ -13,7 +14,7 @@ export class Clock {
     this.minute = minute % 60;
   }
   public toString(): unknown {
-    return buildClock(this.hour) + ":"+buildClock(this.minute as number);
+    return buildClock(this.hour, this.minute);
   }
   public plus(minutes: number): Clock {
     let reloj:Clock = new Clock(this.hour, this.minute as number+minutes)
@@ -32,8 +33,14 @@ export class Clock {
     }
   }
 }
-function buildClock(number: number): string {
-  let n: string = "" + number;
-  if (n.length == 1) n = "0" + n;
-  return n;
+function buildClock(hora: number, minute?: number): string {
+  let h: string = "" + hora;
+  if (h.length == 1) h = "0" + h;
+  if (minute != null) {
+    let m: string = "" + minute;
+    if (m.length == 1) m = "0" + m;
+    return h + ":" + m;
+  } else {
+    return h + ":00";
+  }
 }

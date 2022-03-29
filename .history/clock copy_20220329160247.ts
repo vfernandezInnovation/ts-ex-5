@@ -1,4 +1,5 @@
 import { debug } from "console";
+
 export class Clock {
   hour: number;
   minute?: number;
