@@ -66,11 +66,11 @@ describe('Clock', () => {
       expect(new Clock(1, -160).toString()).toEqual('22:20')
     })
 
-  it('negative minutes rolls over continuously', () => {
+    it('negative minutes rolls over continuously', () => {
       expect(new Clock(1, -4820).toString()).toEqual('16:40')
     })
 
-   it('negative hour and minutes both roll over', () => {
+    it('negative hour and minutes both roll over', () => {
       expect(new Clock(-25, -160).toString()).toEqual('20:20')
     })
 
@@ -87,7 +87,7 @@ describe('Clock', () => {
         expect(new Clock(6, 41).plus(0).toString()).toEqual('06:41')
       })
 
-     it('add to next hour', () => {
+      it('add to next hour', () => {
         expect(new Clock(0, 45).plus(40).toString()).toEqual('01:25')
       })
 

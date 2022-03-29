@@ -21,6 +21,7 @@ export class Clock {
 
     hour = hour + sumaHoras;
     this.hour = isTooManyHours(hour);
+    
   }
 
   public toString(): unknown {
@@ -67,8 +68,8 @@ export class Clock {
     if (m == null) m = 0;
 
     if (m >= 60) {
-      sumaHoras = Math.floor(m / 60);
-      m = Math.floor(m % 60);
+      sumaHoras = isTooManyMinutes(m, true);
+      m = isTooManyMinutes(m, true);
     }
     h = isTooManyHours(h);
 
@@ -79,8 +80,14 @@ export class Clock {
     }
   }
 }
+function isTooManyMinutes(m:number, suma:boolean):number{
+  if(suma)return Math.floor(m / 60);
+   
+  return Math.floor(m % 60);
+ 
 
-function isTooManyHours(hour: number): number {
+}
+function isTooManyHours(hour:number):number{
   if (hour >= 24) {
     return amToPm(hour);
   } else {

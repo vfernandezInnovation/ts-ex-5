@@ -20,7 +20,11 @@ export class Clock {
     if (Math.sign(hour) == -1) hour = creoHoraNegativa(hour);
 
     hour = hour + sumaHoras;
-    this.hour = isTooManyHours(hour);
+    if (hour >= 24) {
+      this.hour = amToPm(hour);
+    } else {
+      this.hour = hour;
+    }
   }
 
   public toString(): unknown {
@@ -28,80 +32,28 @@ export class Clock {
   }
 
   public plus(minutes: number): Clock {
-    let h: number = this.hour;
-    let m: number = 0;
+    let h:number = this.hour;
+    let m:number = 0;
     let sumaHoras: number = 0;
-    if (this.minute != null) {
-      m = this.minute;
+    if(this.minute != null){
+       m= this.minute;
     }
     m = m + minutes;
     if (m >= 60) {
       sumaHoras = Math.floor(m / 60);
       m = Math.floor(m % 60);
     }
-    h = h + sumaHoras;
-    h = isTooManyHours(h);
-    return new Clock(h, m);
+
   }
 
-  public minus(minutes: number): Clock {
-    let h: number = this.hour;
-    let m: number = 0;
-    if (this.minute != null) {
-      m = this.minute;
-    }
-    m = m - minutes;
-    while (Math.sign(m) == -1) {
-      m = 60 - Math.abs(m);
-      h--;
-    }
-    if (Math.sign(h) == -1) h = creoHoraNegativa(h);
-    return new Clock(h, m);
+  public minus(minutes: unknown): Clock {
+    throw new Error("Remove this statement and implement this function");
   }
 
-  public equals(other: Clock): boolean {
-    let h = other.hour;
-    let m = other.minute;
-    let sumaHoras = 0;
-    if (this.minute == null) this.minute = 0;
-    if (m == null) m = 0;
-
-    if (m >= 60) {
-      sumaHoras = Math.floor(m / 60);
-      m = Math.floor(m % 60);
-    }
-    h = isTooManyHours(h);
-
-    if (isHEqualH(this.hour, h) && isMEqualM(this.minute, m)) {
-      return true;
-    } else {
-      return false;
-    }
+  public equals(other: unknown): unknown {
+    throw new Error("Remove this statement and implement this function");
   }
 }
-
-function isTooManyHours(hour: number): number {
-  if (hour >= 24) {
-    return amToPm(hour);
-  } else {
-    return hour;
-  }
-}
-function isHEqualH(hour: number, h: number): boolean {
-  if (hour == h) {
-    return true;
-  } else {
-    return false;
-  }
-}
-function isMEqualM(minute: number, m: number): boolean {
-  if (minute == m) {
-    return true;
-  } else {
-    return false;
-  }
-}
-
 function creoHoraNegativa(h: number): number {
   while (Math.sign(h) == -1) h = 24 - Math.abs(h);
   return h;

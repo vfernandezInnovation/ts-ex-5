@@ -20,7 +20,11 @@ export class Clock {
     if (Math.sign(hour) == -1) hour = creoHoraNegativa(hour);
 
     hour = hour + sumaHoras;
-    this.hour = isTooManyHours(hour);
+    if (hour >= 24) {
+      this.hour = amToPm(hour);
+    } else {
+      this.hour = hour;
+    }
   }
 
   public toString(): unknown {
@@ -40,7 +44,9 @@ export class Clock {
       m = Math.floor(m % 60);
     }
     h = h + sumaHoras;
-    h = isTooManyHours(h);
+    if (h >= 24) {
+      h = amToPm(h);
+    }
     return new Clock(h, m);
   }
 
@@ -70,21 +76,15 @@ export class Clock {
       sumaHoras = Math.floor(m / 60);
       m = Math.floor(m % 60);
     }
-    h = isTooManyHours(h);
+    if (h >= 24) {
+      h = amToPm(h);
+    }
 
     if (isHEqualH(this.hour, h) && isMEqualM(this.minute, m)) {
       return true;
     } else {
       return false;
     }
-  }
-}
-
-function isTooManyHours(hour: number): number {
-  if (hour >= 24) {
-    return amToPm(hour);
-  } else {
-    return hour;
   }
 }
 function isHEqualH(hour: number, h: number): boolean {
